@@ -1,106 +1,116 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="lHh lpR lFf">
+
+    <!-- Header content -->
+    <q-header
+      rounded
+      class="bg-white text-grey"
+      height-hint="98">
       <q-toolbar>
         <q-btn
-          flat
           dense
+          flat
           round
           icon="menu"
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
+          @click="left = !left" />
 
-        <q-toolbar-title>
-          Quasar App
+        <q-toolbar-title class="text-h6">
+          INR Helper
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <!-- Account dialog  -->
+        <q-btn
+          flat
+          round
+          dense
+          icon="account_circle"
+          aria-label="Account"
+          @click="showAccountDialog = true"
+        />
+        <q-dialog v-model="showAccountDialog">
+          <q-card>
+            <q-toolbar>
+              <q-avatar>
+                <img src="../logos/google.png">
+              </q-avatar>
+
+              <q-toolbar-title>Account</q-toolbar-title>
+
+              <q-btn flat round dense icon="close" v-close-popup />
+            </q-toolbar>
+
+            <q-card-section>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus sit voluptate voluptas eveniet porro. Rerum blanditiis perferendis totam, ea at omnis vel numquam exercitationem aut, natus minima, porro labore.
+            </q-card-section>
+          </q-card>
+        </q-dialog>
+
       </q-toolbar>
     </q-header>
 
+    <!-- Drawer  -->
+    <!-- Drawer  -->
     <q-drawer
-      v-model="leftDrawerOpen"
       show-if-above
+      v-model="left"
+      side="left"
       bordered
-      content-class="bg-grey-1"
-    >
-      <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
-        </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
+      >
+      <!-- drawer content -->
     </q-drawer>
 
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <!-- Footer  -->
+    <q-footer bordered class="bg-white text-grey">
+      <q-toolbar>
+          <div class="full-width" >
+
+            <q-tabs
+              v-model="tab"
+              class="text-grey row justify-evenly"
+            >
+              <q-route-tab
+                name="home"
+                icon="home"
+                to="/"
+                label="Home"
+                class=" justify-center"
+                exact
+              />
+              <q-route-tab
+                name="schedule"
+                icon="schedule"
+                to="/schedule"
+                label="Schedule"
+                exact
+
+              />
+              <q-route-tab
+                name="stats"
+                icon="insights"
+                label="Statistics"
+                to="/stats"
+                exact
+              />
+            </q-tabs>
+
+          </div>
+      </q-toolbar>
+    </q-footer>
+
   </q-layout>
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
-
-const linksData = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
-
 export default {
-  name: 'MainLayout',
-  components: { EssentialLink },
   data () {
     return {
-      leftDrawerOpen: false,
-      essentialLinks: linksData
+      showAccountDialog: false,
+      left: false,
+      tab: 'home'
     }
   }
 }
