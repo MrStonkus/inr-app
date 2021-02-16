@@ -3,7 +3,7 @@
 
     <!-- Header content -->
     <q-header
-      rounded
+      bordered
       class="bg-white text-grey"
       height-hint="98">
       <q-toolbar>
@@ -12,18 +12,20 @@
           flat
           round
           icon="menu"
+          style="font-size: 1.4em;"
           @click="left = !left" />
 
         <q-toolbar-title class="text-h6">
-          INR Helper
+          INR Assistant
         </q-toolbar-title>
 
         <!-- Account dialog  -->
         <q-btn
           flat
-          round
           dense
+          round
           icon="account_circle"
+          style="font-size: 1.5em;"
           aria-label="Account"
           @click="showAccountDialog = true"
         />
