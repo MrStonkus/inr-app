@@ -116,8 +116,8 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'INR Helper',
-        short_name: 'INR Helper',
+        name: 'INR',
+        short_name: 'INR',
         description: 'App for INR monitoring',
         display: 'standalone',
         orientation: 'portrait',
@@ -168,6 +168,7 @@ module.exports = function (/* ctx */) {
       bundler: 'packager', // 'packager' or 'builder'
 
       packager: {
+        platform: 'win32'
         // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
 
         // OS X / Mac App Store

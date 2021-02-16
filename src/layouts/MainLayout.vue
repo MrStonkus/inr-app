@@ -49,7 +49,6 @@
     </q-header>
 
     <!-- Drawer  -->
-    <!-- Drawer  -->
     <q-drawer
       show-if-above
       v-model="left"
