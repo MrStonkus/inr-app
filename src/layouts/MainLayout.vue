@@ -65,12 +65,13 @@
 
     <!-- Footer  -->
     <q-footer bordered class="bg-white text-grey">
-      <q-toolbar>
-          <div class="full-width" >
+      <q-toolbar  >
+          <div class="q-gutter-y-md full-width" >
 
             <q-tabs
               v-model="tab"
-              class="text-grey row justify-evenly"
+              class="q-pb-xs text-grey row justify-evenly"
+              dense
             >
               <q-route-tab
                 name="home"
@@ -98,6 +99,7 @@
             </q-tabs>
 
           </div>
+
       </q-toolbar>
     </q-footer>
 
