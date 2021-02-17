@@ -67,6 +67,7 @@
     </q-drawer>
 
     <q-page-container>
+      <!-- page content -->
       <router-view />
     </q-page-container>
 

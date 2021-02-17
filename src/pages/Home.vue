@@ -30,7 +30,7 @@
         <div class="text-subtitle2">Stop smoking</div>
         {{ lorem }}
       </q-card-section>
-      <q-separator inset />
+      <q-separator inset class="q-mb-sm"/>
 
       <q-card-section class="q-pt-none">
         <div class="text-subtitle2">More activity</div>
