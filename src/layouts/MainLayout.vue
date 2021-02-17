@@ -123,9 +123,21 @@ export default {
       showAccountDialog: false,
       left: false,
       tab: 'home',
-      // fullDate: date.formatDate(Date.now(), 'YYYY MMMM D,  HH:mm')
-      fullDate: date.formatDate(Date.now(), 'HH:mm dddd, YYYY-MM-D')
+      fullDate: ''
 
+    }
+  },
+  created () {
+    // get fullDate at start
+    this.getDate()
+    // update fullDate every minute
+    setInterval(() => {
+      this.getDate()
+    }, 60000)
+  },
+  methods: {
+    getDate: function () {
+      this.fullDate = date.formatDate(Date.now(), 'dddd, YYYY-MM-D')
     }
   }
 }

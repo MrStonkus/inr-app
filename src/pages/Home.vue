@@ -1,20 +1,9 @@
 <template>
   <div class="q-pa-md row items-start q-gutter-md text-dark">
 
-    <q-card class="home-card ">
-      <q-card-section>
-        <div class="text-h6 text-center">Your status</div>
-        <div class="text-h4 text-center text-positive text-bold">Very Good</div>
-      </q-card-section>
-      <q-card-section class="q-pt-none">
-        <p class="q-mb-none">Current INR - 2.32</p>
-        <p class="q-mb-none">Measurement was - today</p>
-        <p class="q-mb-none">Weekly dose - 40mg</p>
-        <p class="q-mb-none">Dose and medicine monitoring - automaticaly</p>
-      </q-card-section>
-    </q-card>
+    <StatusCard v-if="showStatusCard"/>
 
-    <q-card class="home-card ">
+    <q-card class="home-card " bordered>
       <q-card-section>
         <div class="text-h6 ">Personal recommentations</div>
       </q-card-section>
@@ -42,16 +31,24 @@
 </template>
 
 <script>
+import StatusCard from '../components/StatusCard.vue'
+
 export default {
+  components: {
+    StatusCard
+  },
   data () {
     return {
+      showStatusCard: true,
       lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
     }
   }
 }
 </script>
 <style lang="sass" scoped>
+
 .home-card
   width: 100%
   // max-width: 250px
+
 </style>
