@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md row items-start q-gutter-md">
+  <div class="q-pa-md row items-start q-gutter-md text-dark">
 
     <q-card class="home-card ">
       <q-card-section>

@@ -4,7 +4,7 @@
     <!-- Header content -->
     <q-header
       bordered
-      class="bg-white text-grey"
+      class="bg-primary text-secondary"
       height-hint="98">
       <q-toolbar>
         <q-btn
@@ -15,37 +15,43 @@
           style="font-size: 1.4em;"
           @click="left = !left" />
 
-        <q-toolbar-title class="text-h6">
+        <q-toolbar-title class="text-h6 gt-xs">
           INR Assistant
         </q-toolbar-title>
 
-        <!-- Account dialog  -->
-        <q-btn
-          flat
-          dense
-          round
-          icon="account_circle"
-          style="font-size: 1.5em;"
-          aria-label="Account"
-          @click="showAccountDialog = true"
-        />
-        <q-dialog v-model="showAccountDialog">
-          <q-card>
-            <q-toolbar>
-              <q-avatar>
-                <img src="../logos/google.png">
-              </q-avatar>
+        <div class="absolute-right">
+          <!-- Date string  -->
+          <span>
+            {{fullDate}}
+          </span>
+          <!-- Account dialog  -->
+          <q-btn
+            flat
+            dense
+            round
+            icon="account_circle"
+            style="font-size: 1.5em;"
+            aria-label="Account"
+            @click="showAccountDialog = true"
+          />
+          <q-dialog v-model="showAccountDialog">
+            <q-card>
+              <q-toolbar>
+                <q-avatar>
+                  <img src="../assets/google.png">
+                </q-avatar>
 
-              <q-toolbar-title>Account</q-toolbar-title>
+                <q-toolbar-title>Account</q-toolbar-title>
 
-              <q-btn flat round dense icon="close" v-close-popup />
-            </q-toolbar>
+                <q-btn flat round dense icon="close" v-close-popup />
+              </q-toolbar>
 
-            <q-card-section>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus sit voluptate voluptas eveniet porro. Rerum blanditiis perferendis totam, ea at omnis vel numquam exercitationem aut, natus minima, porro labore.
-            </q-card-section>
-          </q-card>
-        </q-dialog>
+              <q-card-section>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus sit voluptate voluptas eveniet porro. Rerum blanditiis perferendis totam, ea at omnis vel numquam exercitationem aut, natus minima, porro labore.
+              </q-card-section>
+            </q-card>
+          </q-dialog>
+        </div>
 
       </q-toolbar>
     </q-header>
@@ -65,13 +71,13 @@
     </q-page-container>
 
     <!-- Footer  -->
-    <q-footer bordered class="bg-white text-grey">
+    <q-footer bordered class="bg-primary">
       <q-toolbar  >
           <div class="q-gutter-y-md full-width" >
 
             <q-tabs
               v-model="tab"
-              class="q-pb-xs text-grey row justify-evenly"
+              class="q-pb-xs text-secondary row justify-evenly"
               dense
             >
               <q-route-tab
@@ -108,12 +114,17 @@
 </template>
 
 <script>
+import { date } from 'quasar'
+
 export default {
   data () {
     return {
       showAccountDialog: false,
       left: false,
-      tab: 'home'
+      tab: 'home',
+      // fullDate: date.formatDate(Date.now(), 'YYYY MMMM D,  HH:mm')
+      fullDate: date.formatDate(Date.now(), 'HH:mm dddd, YYYY-MM-D')
+
     }
   }
 }
