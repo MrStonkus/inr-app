@@ -50,6 +50,26 @@ export default {
   computed: {
     moreOrLess () {
       return this.expanded ? 'Less' : 'More'
+    },
+    INRComment () {
+      const inr = this.currentINR
+      const min = this.INRrangeLowest
+      const max = this.INRrangeHighest
+      const middle = (max - min) / 2 + min
+      const maxDiff = this.maxDiffForPerfect
+
+      if ((inr >= (middle - maxDiff)) && (inr <= (middle + maxDiff))) {
+        return 'perfect'
+      } else {
+        return (inr >= min && inr <= max) ? 'in range' : 'not in range'
+      }
+    },
+    statusItems () {
+      return [
+        { name: 'Current INR', value: this.currentINR, unit: '', comment: this.INRComment },
+        { name: 'Measurement was', value: 'today', unit: 'days' },
+        { name: 'Weekly dose', value: 40, unit: 'mg' }
+      ]
     }
   }
 }
