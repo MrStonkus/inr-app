@@ -30,11 +30,13 @@
       <!-- Hide/show cards dialog  -->
       <q-dialog v-model="hideShowCardsDialog">
         <q-card>
-          <q-toolbar>
-            <q-toolbar-title>Home cards</q-toolbar-title>
-            <q-btn flat round dense icon="close" v-close-popup />
-          </q-toolbar>
           <q-card-section>
+            <div class="row">
+              <q-card-title class="text-h6 ">Home cards</q-card-title>
+              <q-space/>
+              <q-btn flat round dense icon="close" v-close-popup />
+            </div>
+            <div class="text-subtitle2">Set home cards visibility</div>
             <div class="q-pa-md">
               <div class="column q-gutter-sm">
                 <q-checkbox
@@ -48,6 +50,15 @@
               </div>
             </div>
           </q-card-section>
+          <q-card-actions align="right">
+            <q-btn
+              flat
+              label="Close"
+              class="text-capitalize"
+              color="secondary"
+              v-close-popup />
+
+        </q-card-actions>
         </q-card>
       </q-dialog>
 
