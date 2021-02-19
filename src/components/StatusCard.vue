@@ -57,7 +57,6 @@ export default {
   },
   data () {
     return {
-      expanded: false,
       inr: {
         value: 2.32,
         PT: 24.6,
@@ -70,6 +69,7 @@ export default {
         normalRange: 0.5 // maximum difference for normal
 
       },
+      expanded: false,
       statusText: 'Good',
       lorem: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla hic voluptas ex in commodi, aliquid, doloribus ipsam tempora non quisquam numquam, pariatur id facilis repellendus atque perspiciatis nihil modi? Ab.'
     }

@@ -4,41 +4,52 @@
     <StatusCard v-if="showStatusCard"/>
     <RecommendationsCard v-if="showRecommendationsCard"/>
 
+    <!-- Two cards inline -->
     <div class="card-width row ">
-      <div
-        class="col
-         q-card
-         q-mr-md
-         q-pa-md
-
-         "
-         >
+      <div class="col q-card q-mr-md q-pa-md">
         INR check
       </div>
-      <div
-        bordered
-        class="col
-         q-card
-         q-pa-md
-
-        ">Today warfarin
+      <div bordered class="col q-card q-pa-md">
+        Today warfarin
       </div>
-
     </div>
 
-    <q-card  bordered class="half-card">
-      <q-card-section>
-        <div class="text-h10">Next INR check</div>
-        <span class="text-subtitle2">Tap to check</span>
-      </q-card-section>
-    </q-card>
+    <!-- Hide/show cards button -->
+    <div class="full-width text-center">
+      <q-btn
+            color="grey"
+            class="text-capitalize"
+            flat
+            dense
+            @click="hideShowCardsDialog = true"
+            aria-label="Hide / Show cards"
+            >Hide / show cards
+          </q-btn>
+      </div>
 
-    <q-card  bordered class="half-card">
-      <q-card-section>
-        <div class="text-h10">Next INR check</div>
-        <span class="text-subtitle2">Tap to check</span>
-      </q-card-section>
-    </q-card>
+      <!-- Hide/show cards dialog  -->
+      <q-dialog v-model="hideShowCardsDialog">
+        <q-card>
+          <q-toolbar>
+            <q-toolbar-title>Home cards</q-toolbar-title>
+            <q-btn flat round dense icon="close" v-close-popup />
+          </q-toolbar>
+          <q-card-section>
+            <div class="q-pa-md">
+              <div class="column q-gutter-sm">
+                <q-checkbox
+                  v-model="showStatusCard"
+                  label="Status"
+                  color="positive" />
+                <q-checkbox
+                  v-model="showRecommendationsCard"
+                  label="Recommendations"
+                  color="positive" />
+              </div>
+            </div>
+          </q-card-section>
+        </q-card>
+      </q-dialog>
 
   </div>
 </template>
@@ -54,8 +65,10 @@ export default {
   },
   data () {
     return {
+
       showStatusCard: true,
       showRecommendationsCard: true,
+      hideShowCardsDialog: true,
       lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
     }
   }
@@ -65,9 +78,5 @@ export default {
 
 .card-width
   width: 100%
-
-.half-card
-  width: 45%
-  // max-width: 250px
 
 </style>
