@@ -1,8 +1,8 @@
 <template>
   <div class="q-pa-md row items-start q-gutter-md text-dark">
 
-    <StatusCard v-if="showStatusCard"/>
-    <RecommendationsCard v-if="showRecommendationsCard"/>
+    <StatusCard v-if="settings.showStatusCard"/>
+    <RecommendationsCard v-if="settings.showRecommendationsCard"/>
 
     <!-- Two cards inline -->
     <div class="card-width row ">
@@ -21,18 +21,18 @@
             class="text-capitalize"
             flat
             dense
-            @click="hideShowCardsDialog = true"
+            @click="settings.hideShowCardsDialog = true"
             aria-label="Hide / Show cards"
             >Hide / show cards
           </q-btn>
       </div>
 
       <!-- Hide/show cards dialog  -->
-      <q-dialog v-model="hideShowCardsDialog">
+      <q-dialog v-model="settings.hideShowCardsDialog">
         <q-card>
           <q-card-section>
             <div class="row">
-              <q-card-title class="text-h6 ">Home cards</q-card-title>
+              <div class="text-h6 ">Home cards</div>
               <q-space/>
               <q-btn flat round dense icon="close" v-close-popup />
             </div>
@@ -40,11 +40,11 @@
             <div class="q-pa-md">
               <div class="column q-gutter-sm">
                 <q-checkbox
-                  v-model="showStatusCard"
+                  v-model="settings.showStatusCard"
                   label="Status"
                   color="positive" />
                 <q-checkbox
-                  v-model="showRecommendationsCard"
+                  v-model="settings.showRecommendationsCard"
                   label="Recommendations"
                   color="positive" />
               </div>
@@ -76,10 +76,13 @@ export default {
   },
   data () {
     return {
+      settings: {
 
-      showStatusCard: true,
-      showRecommendationsCard: true,
-      hideShowCardsDialog: true,
+        showStatusCard: true,
+        showRecommendationsCard: true,
+        hideShowCardsDialog: false
+      },
+
       lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
     }
   }
