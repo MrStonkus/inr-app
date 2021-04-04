@@ -66,6 +66,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import StatusCard from '../components/StatusCard.vue'
 import RecommendationsCard from '../components/RecommendationsCard.vue'
 
@@ -76,15 +77,14 @@ export default {
   },
   data () {
     return {
-      settings: {
-
-        showStatusCard: true,
-        showRecommendationsCard: true,
-        hideShowCardsDialog: false
-      },
 
       lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
     }
+  },
+  computed: {
+    // settings () { return this.$store.getters['settings/settings']}
+    // or use mapGetters below
+    ...mapGetters('settings', ['settings'])
   }
 }
 </script>
