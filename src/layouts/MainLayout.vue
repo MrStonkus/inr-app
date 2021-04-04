@@ -137,7 +137,7 @@ export default {
   },
   methods: {
     getDate: function () {
-      this.fullDate = date.formatDate(Date.now(), 'dddd, YYYY-MM-D')
+      this.fullDate = date.formatDate(Date.now(), 'dddd, YYYY-MM-DD')
     }
   }
 }
